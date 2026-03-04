@@ -1,5 +1,3 @@
--- Run this in the Supabase SQL editor or psql connected to the project DB
-
 -- Enable pgcrypto for gen_random_uuid
 create extension if not exists "pgcrypto";
 
@@ -30,8 +28,9 @@ for each row execute procedure public.set_updated_at();
 alter table public.sheets enable row level security;
 
 -- Allow owners to insert rows where owner = auth.uid()
+-- For INSERT policies, PostgreSQL only allows WITH CHECK expressions; include auth.role() check inside WITH CHECK
 create policy "Insert own sheets" on public.sheets
-for insert using (auth.role() = 'authenticated') with check (owner = auth.uid());
+for insert with check (auth.role() = 'authenticated' AND owner = auth.uid());
 
 -- Allow owners to select their own sheets
 create policy "Select own sheets" on public.sheets
