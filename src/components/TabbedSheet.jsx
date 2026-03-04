@@ -10,7 +10,7 @@ function useAutosave(key, state) {
   }, [key, state])
 }
 
-export default function TabbedSheet({ sheetId, initial }) {
+export default function TabbedSheet({ sheetId, initial, onChange }) {
   const storageKey = `sheet-${sheetId}`
   const [tabs, setTabs] = useState(() => {
     try {
@@ -22,6 +22,10 @@ export default function TabbedSheet({ sheetId, initial }) {
   const [active, setActive] = useState(tabs[0]?.id)
 
   useAutosave(storageKey, tabs)
+
+  useEffect(() => {
+    if (onChange) onChange(tabs)
+  }, [tabs])
 
   useEffect(() => {
     if (!tabs.find(t => t.id === active)) setActive(tabs[0]?.id)
