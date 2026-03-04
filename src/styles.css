@@ -1,0 +1,7 @@
+/* minimal base styles for prototype */
+html,body,#root { height: 100%; }
+body { margin: 0; font-family: Inter, Roboto, Arial, sans-serif; background: #f1f5f9; color: #0f172a }
+.app-root { display: flex; flex-direction: column; min-height: 100vh }
+main { flex: 1 }
+
+button { cursor: pointer }
