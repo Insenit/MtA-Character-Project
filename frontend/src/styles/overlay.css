@@ -1,0 +1,161 @@
+/* Fullscreen semi-transparent dark backdrop */
+.overlay-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal box containing the overlay content and footer */
+.overlay-modal {
+  background-color: #0b1120;
+  color: #fff;
+  border-radius: 8px;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Main content area: list + details */
+.overlay-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar list of selectable options */
+.overlay-list {
+  flex: 0 0 225px;
+  background-color: #0b1120;
+  border-right: 1px solid #333;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.overlay-list div {
+  padding: 6px 2px;
+  font-size: 1rem;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.overlay-list div:hover {
+  color: #ff5722;
+}
+
+.overlay-list .selected {
+  color: #ff5722;
+  font-weight: bold;
+}
+
+/* Detailed view area (right pane) */
+.overlay-details {
+  flex: 1 1 0;
+  padding: 16px;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* Bottom bar with action buttons */
+.overlay-bottom-bar {
+  padding: 10px;
+  border-top: 1px solid #aaa;
+  background-color: #0b1120;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  height: 1.75rem;
+}
+
+.right-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons within the overlay */
+.overlay-button {
+  background-color: #263147;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.overlay-button:hover {
+  background-color: #ff5722;
+}
+
+/* Optional scrollable sections inside details */
+.overlay-scrollable {
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+.subrace-button {
+  display: block;
+  margin-top: 0.5rem;
+  background-color: #263147;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subrace-button.active {
+  background-color: #ff5722;
+}
+
+.proficiency-set-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.proficiency-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.group-label {
+  margin-bottom: 0.5rem;
+}
+
+.option-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.option-button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background-color: #263147;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.option-button.selected {
+  background-color: #ff5722;
+  color: white;
+}
+
+.option-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
